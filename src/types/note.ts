@@ -12,12 +12,6 @@ export interface FetchNoteResponse {
   totalPages: number;
 }
 
-export interface UserNote {
-  title: string;
-  content: string;
-  type: string;
-}
-
 export interface NewNote {
   title: string;
   content: string;

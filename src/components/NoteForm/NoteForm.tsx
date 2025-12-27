@@ -25,6 +25,7 @@ export default function NoteForm({ onClose }: NoteFormProp) {
     mutationFn: (value: NewNote) => createNote(value),
     onSuccess: () => {
       toast.success("Note created successfully");
+      onClose();
       queryClient.invalidateQueries({ queryKey: ["notes"] });
     },
     onError: () => toast.error("something happened"),
@@ -35,7 +36,6 @@ export default function NoteForm({ onClose }: NoteFormProp) {
     actions: FormikHelpers<OrderFormValues>
   ) {
     mutation.mutate(values as NewNote);
-    onClose();
     actions.resetForm();
   }
 
@@ -45,8 +45,7 @@ export default function NoteForm({ onClose }: NoteFormProp) {
       .max(50, "Name is too long")
       .required("Title is required"),
     content: Yup.string()
-      .max(500, "Content is too long")
-      .required("You haven't written anything"),
+      .max(500, "Content is too long"),
     tag: Yup.string()
       .oneOf(["Todo", "Work", "Personal", "Meeting", "Shopping"])
       .required("You need to select a tag"),

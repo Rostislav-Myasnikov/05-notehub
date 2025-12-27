@@ -1,19 +1,18 @@
 import css from "./Pagination.module.css";
 import ReactPaginate from "react-paginate";
-import type { FetchNoteResponse } from "../../types/note";
 
  interface PaginationProp {
-    res:FetchNoteResponse,
+    totalPages:number,
     page: number
     setPage: (page: number) => void;
 }
 
-export default function Pagination({ res, page, setPage  }: PaginationProp) {
+export default function Pagination({ totalPages, page, setPage  }: PaginationProp) {
   return (
     <>
-      {res.totalPages > 1 && (
+      {totalPages > 1 && (
         <ReactPaginate
-          pageCount={res.totalPages}
+          pageCount={totalPages}
           pageRangeDisplayed={5}
           marginPagesDisplayed={1}
           onPageChange={({ selected }) => setPage(selected + 1)}

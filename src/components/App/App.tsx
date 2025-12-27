@@ -34,7 +34,7 @@ function App() {
               setPage(1);
             }}
           />
-          {data && <Pagination res={data} page={page} setPage={setPage} />}
+          {data && data?.totalPages > 1 && <Pagination totalPages={data.totalPages} page={page} setPage={setPage} />}
           <button onClick={isOpenModal} className={css.button}>
             Create note +
           </button>
