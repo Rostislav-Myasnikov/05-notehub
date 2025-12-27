@@ -1,5 +1,5 @@
 import axios from "axios";
-import type { FetchNoteResponse, UserNote } from "../types/note";
+import type { FetchNoteResponse, NewNote } from "../types/note";
 
 
 
@@ -20,7 +20,7 @@ export async function fetchNotes(query: string, page: number): Promise<FetchNote
     return res.data
 }
 
-export async function createNote(userNote:UserNote): Promise<void> {
+export async function createNote(userNote:NewNote): Promise<void> {
     await axios.post<void>(`${BASE_URL}`, userNote, {
         headers: {
             Authorization: `Bearer ${import.meta.env.VITE_NOTEHUB_TOKEN}`,

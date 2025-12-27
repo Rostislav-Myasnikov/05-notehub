@@ -36,3 +36,9 @@ export interface SearchBoxProp {
     setQuery: (value: string) => void
 
 }
+
+export interface NewNote {
+    title: string,
+    content: string,
+    tag: string
+}
