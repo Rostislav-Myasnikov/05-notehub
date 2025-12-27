@@ -1,5 +1,10 @@
 import { useDebouncedCallback } from "use-debounce";
-import type { SearchBoxProp } from "../types/note";
+
+ interface SearchBoxProp {
+
+    setQuery: (value: string) => void
+
+}
 
 export default function SearchBox({ setQuery }: SearchBoxProp) {
   const updateQuery = useDebouncedCallback(

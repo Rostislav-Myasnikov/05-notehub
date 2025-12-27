@@ -1,7 +1,12 @@
 import css from "./Pagination.module.css";
 import ReactPaginate from "react-paginate";
-import type { PaginationProp } from "../types/note";
+import type { FetchNoteResponse } from "../../types/note";
 
+ interface PaginationProp {
+    res:FetchNoteResponse,
+    page: number
+    setPage: (page: number) => void;
+}
 
 export default function Pagination({ res, page, setPage  }: PaginationProp) {
   return (
